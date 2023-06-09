@@ -17,9 +17,14 @@ const slides = [
 	}
 ]
 
+
+/********** VARIABLES **********/
 //init dotSelected number
 let dotSelected = 0;
+const slidesLength = slides.length - 1;
 
+
+/********** FUNCTIONS **********/
 //Function for create bullet points
 function generatedots(slides) {
 	const dots = document.querySelector(".dots");
@@ -39,27 +44,27 @@ function generateSlides() {
 	baliseText.innerHTML= slides[dotSelected].tagLine;
 }
 
+
+
 //generate dots for the first time.
 generatedots(slides);
-
-
 
 //Add EventListener on the arrows with slide update
 const arrowLeft = document.querySelector(".arrow_left");
 arrowLeft.addEventListener("click", function (){
 	dotSelected --;
-	dotSelected < 0 ? dotSelected=3 : null;
+	dotSelected < 0 ? dotSelected=slidesLength : null;
 	generatedots(slides);
 	generateSlides();
-	return console.log("click arrow left " + dotSelected);
+	return console.log("click arrow left " + dotSelected + " " + slidesLength);
 })
 
 
 const arrowRight = document.querySelector(".arrow_right");
 arrowRight.addEventListener("click", function (){
 	dotSelected ++;
-	dotSelected > 3 ? dotSelected=0 : null;
+	dotSelected > slidesLength ? dotSelected = 0 : null;
 	generatedots(slides);
 	generateSlides();
-	return console.log("click arrow right " + dotSelected);
+	return console.log("click arrow right " + dotSelected + " " + slidesLength);
 })
