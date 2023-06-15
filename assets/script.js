@@ -17,30 +17,24 @@ const slides = [
 	}
 ]
 
-/////////////////////////////////
-/********** VARIABLES **********/
-/////////////////////////////////
 
-//init dotSelected number
+
+//variables
+
 let dotSelected = 0;
 //slidesLength = last index of the table
 const slidesLength = slides.length - 1;
-//dots : all class="dots" in the HTML
 const dots = document.querySelector(".dots");
-//(check)
 console.log( dots);
-//arrowLeft : all class="arrow_left"
 const arrowLeft = document.querySelector(".arrow_left");
-//arrowLeft : all class="arrow_Right"
 const arrowRight = document.querySelector(".arrow_right");
 
-/////////////////////////////////
-/********** FUNCTIONS **********/
-/////////////////////////////////
+
+//functions
 
 // Function for create bullet points
 // scans the "slides" table and creates a dot for each entry
-function generatedots(slides) {
+function generateDots(slides) {
 	for (let i = 0; i < slides.length; i++) {
 		const dotElement = document.createElement("div");
 		dotElement.setAttribute("class", "dot");
@@ -57,14 +51,12 @@ function generateSlides() {
 	baliseText.innerHTML= slides[dotSelected].tagLine;
 }
 
-/////////////////////////////
-/**********SCRIPT **********/
-/////////////////////////////
 
-generatedots(slides);
+//code
+
+generateDots(slides);
 // dot: all class="dot" in a table ( not create before because the dots don't exist)
 const dot = document.querySelectorAll(".dot");
-//check
 console.log(dot);
 //add dot_selected class on the active dot
 dot[dotSelected].setAttribute("class", "dot dot_selected");
@@ -77,7 +69,7 @@ arrowLeft.addEventListener("click", function (){
 	dotSelected < 0 ? dotSelected=slidesLength : null;
 	dot[dotSelected].setAttribute("class", "dot dot_selected");
 	generateSlides();
-	return console.log("click arrow left " + dotSelected + " " + slidesLength);
+	return console.log("click arrow: left " + "; Dot selected: " + dotSelected + "; Total Number of slides: " + slidesLength);
 })
 
 
@@ -88,5 +80,5 @@ arrowRight.addEventListener("click", function (){
 	dotSelected > slidesLength ? dotSelected = 0 : null;
 	dot[dotSelected].setAttribute("class", "dot dot_selected");
 	generateSlides();
-	return console.log("click arrow right " + dotSelected + " " + slidesLength);
+	return console.log("click arrow: right " + "; Dot selected: " + dotSelected + "; Total Number of slides: " + slidesLength);
 })
